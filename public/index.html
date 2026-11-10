@@ -151,7 +151,7 @@ $("f").onsubmit=function(e){e.preventDefault();var el=this.elements,n=esc(el.nam
 api("/api/order",o).then(function(){done(n)},function(){alert("Не вдалося відправити замовлення. Спробуйте ще раз.")})};
 function done(n){cart={};save();$("cnt").textContent=0;
 $("db").innerHTML='<div class="done"><div class="big">💗</div><h2>Дякуємо, '+n+'!</h2><p class="sub">Ми зателефонуємо для підтвердження замовлення.</p></div>';$("df").innerHTML=""}}
-function bgs(p){return p.img?'background:url("'+p.img+'") center/cover':'background:'+p.bg}
+function bgs(p){return p.img?'background:var(--soft) url('+p.img+') center/cover':'background:'+p.bg}
 var BGS=["linear-gradient(160deg,#ffd6e6,#ff9fc3)","linear-gradient(160deg,#fff0f5,#ffc2d9)","linear-gradient(160deg,#ffc9dc,#ff7fae)"];
 function api(path,body){return fetch(path,{method:"POST",headers:{"Content-Type":"application/json","x-admin-token":TOKEN||""},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||"помилка");return j})})}
 function pubAll(){var m=$("pmsg");m.textContent="Зберігаю…";return api("/api/products",P).then(function(){m.textContent="Збережено ✓";chips();grid();plist()},function(e){m.textContent="Не вдалося зберегти: "+e.message;throw e})}
