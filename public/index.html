@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Darknezz.shop — дизайнерський одяг та речі</title>
+<style>
+:root{--bg:#fff8fa;--card:#fff;--tx:#24101a;--mut:#85707a;--ac:#ff3d86;--soft:#ffe3ee;--bd:#f5d9e4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#160d12;--card:#21141b;--tx:#fff0f5;--mut:#b49aa6;--ac:#ff5c9c;--soft:#3a1f2d;--bd:#3a2430;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#160d12;--card:#21141b;--tx:#fff0f5;--mut:#b49aa6;--ac:#ff5c9c;--soft:#3a1f2d;--bd:#3a2430;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Helvetica Neue",Helvetica,Arial,system-ui,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid var(--bd)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;font-size:21px;letter-spacing:-.8px}.logo i{font-style:normal;color:var(--ac)}
+nav{display:flex;gap:22px;align-items:center;font-size:14px}nav a{color:var(--tx);text-decoration:none}
+.cartbtn{background:var(--tx);color:var(--bg);border:0;border-radius:999px;padding:9px 18px;font:600 14px inherit;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;padding:54px 0 40px}
+.hero small{display:inline-block;background:var(--soft);color:var(--ac);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(38px,7vw,74px);line-height:.98;letter-spacing:-2.5px;margin:16px 0}
+.hero h1 em{font-style:normal;color:var(--ac)}
+.hero p{color:var(--mut);max-width:430px;margin:0 0 24px}
+.btn{display:inline-block;background:var(--ac);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:600 15px inherit;cursor:pointer;text-decoration:none}
+.btn.o{background:none;color:var(--tx);border:1px solid var(--tx);margin-left:8px}
+.art{aspect-ratio:4/5;border-radius:200px 200px 28px 28px;background:linear-gradient(160deg,#ffc2d9,#ff3d86);display:grid;place-items:center;font-size:120px;position:relative}
+.art span{position:absolute;bottom:16px;left:16px;right:16px;background:var(--card);color:var(--tx);border-radius:16px;padding:10px 14px;font-size:13px}
+.strip{background:var(--tx);color:var(--bg);padding:12px 0;text-align:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+section{padding:44px 0}
+h2{font-size:clamp(26px,4vw,38px);letter-spacing:-1.2px;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 20px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 18px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:999px;padding:8px 18px;font:500 14px inherit;cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{display:flex;flex-direction:column}
+.pic{aspect-ratio:3/4;border-radius:22px;display:grid;place-items:center;font-size:84px;position:relative;overflow:hidden}
+.tag{position:absolute;top:12px;left:12px;background:var(--card);color:var(--ac);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+.card h3{margin:12px 0 2px;font-size:16px;font-weight:600}.card .c{color:var(--mut);font-size:13px}
+.price{display:flex;gap:8px;align-items:baseline;margin:4px 0 10px}.price b{font-size:18px}.price s{color:var(--mut);font-size:14px}
+.sizes{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.sz{min-width:38px;padding:6px 8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:500 13px inherit;cursor:pointer}
+.sz.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.add{margin-top:auto;background:var(--soft);color:var(--ac);border:0;border-radius:999px;padding:11px;font:700 14px inherit;cursor:pointer}
+.add:hover{background:var(--ac);color:#fff}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.perk{background:var(--soft);border-radius:20px;padding:20px}.perk b{display:block;margin-bottom:4px}.perk span{color:var(--mut);font-size:14px}
+footer{border-top:1px solid var(--bd);padding:28px 0;color:var(--mut);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ov{position:fixed;inset:0;background:rgba(36,16,26,.5);display:none;z-index:20}.ov.on{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(430px,100%);background:var(--bg);z-index:21;transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--bd)}.dh b{font-size:19px}
+.x{background:none;border:0;font-size:28px;color:var(--tx);cursor:pointer;line-height:1}
+.db{flex:1;overflow-y:auto;padding:8px 18px}
+.row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--bd)}
+.row .e{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:28px}
+.row .n{flex:1;font-size:14px}.row .n b{display:block}.row .n span{color:var(--mut)}
+.qty{display:flex;align-items:center;gap:6px}.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+.df{border-top:1px solid var(--bd);padding:16px 18px}
+.tot{display:flex;justify-content:space-between;font-size:19px;font-weight:700;margin-bottom:4px}
+.note{font-size:13px;color:var(--mut);margin:0 0 10px}
+form{display:grid;gap:8px}
+input,select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:16px inherit}
+.done{text-align:center;padding:50px 10px}.done .big{font-size:60px}
+.empty{color:var(--mut);text-align:center;padding:50px 0}
+.adm{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:15;display:none;background:var(--ac);color:#fff;border:0;border-radius:999px;padding:12px 18px;font:700 14px inherit;cursor:pointer;box-shadow:0 6px 20px rgba(255,61,134,.4)}
+.pnl{position:fixed;inset:0;z-index:30;background:rgba(36,16,26,.55);display:none;overflow-y:auto;padding:20px 12px}.pnl.on{display:block}
+.box{max-width:560px;margin:0 auto;background:var(--bg);border-radius:20px;padding:20px}.box h2{font-size:24px}.box label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+.pr{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:14px}.pr span{flex:1}.pr button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:5px 10px;cursor:pointer}
+.prev{width:90px;height:120px;border-radius:12px;background:var(--soft) center/cover;margin-top:8px}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:30px}.art{max-width:340px;font-size:90px}nav a{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="logo">Darknezz<i>.shop</i></div>
+<nav><a href="#catalog">Каталог</a><a href="#info">Доставка</a><button class="cartbtn" id="openCart">Кошик · <span id="cnt">0</span></button></nav></div></header>
+
+<main>
+<div class="wrap hero">
+<div>
+<small>Нова колекція · 2026</small>
+<h1>Дизайнерські речі, що <em>говорять</em> за тебе</h1>
+<p>Одяг, взуття та аксесуари з характером. Мало екземплярів, багато стилю. Доставка по Україні.</p>
+<a class="btn" href="#catalog">Дивитись колекцію</a><a class="btn o" href="#info">Доставка</a>
+</div>
+<div class="art">🧥<span>Оверсайз-тренч · залишилось 3 шт.</span></div>
+</div>
+<div class="strip">Безкоштовна доставка від 3000 ₴ · Оплата при отриманні</div>
+
+<section id="catalog"><div class="wrap">
+<h2>Колекція</h2><p class="sub">Обирай розмір і додавай у кошик.</p>
+<div class="chips" id="chips"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="info"><div class="wrap">
+<h2>Як це працює</h2><p class="sub">Просто й без сюрпризів.</p>
+<div class="perks">
+<div class="perk"><b>Нова пошта</b><span>Відправка в день замовлення, доставка 1–3 дні.</span></div>
+<div class="perk"><b>Оплата при отриманні</b><span>Приміряй у відділенні й плати тільки за те, що підійшло.</span></div>
+<div class="perk"><b>Обмін і повернення</b><span>14 днів, якщо розмір не підійшов.</span></div>
+<div class="perk"><b>Лімітовані тиражі</b><span>Кожна річ у малій кількості, тож краще не відкладати.</span></div>
+</div></div></section>
+</main>
+
+<div class="wrap"><footer><span>© 2026 Darknezz.shop</span><span>Instagram: @darknezz.shop · Telegram: @darknezz · +380 00 000 00 00</span></footer></div>
+
+<button class="adm" id="admBtn">＋ Керувати товарами</button>
+<div class="pnl" id="pnl"><div class="box">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2 id="pt">Новий товар</h2><button class="x" id="pclose">×</button></div>
+<form id="pf">
+<label>Назва</label><input name="n" required>
+<label>Категорія</label><input name="c" list="cl" required placeholder="Одяг, Взуття…"><datalist id="cl"></datalist>
+<label>Ціна, ₴</label><input name="p" type="number" min="0" required>
+<label>Стара ціна, ₴ (необов’язково)</label><input name="o" type="number" min="0">
+<label>Розміри через кому</label><input name="s" placeholder="S, M, L">
+<label>Мітка (Хіт, Новинка…)</label><input name="t">
+<label>Фото</label><input name="f" type="file" accept="image/*"><div class="prev" id="prev"></div>
+<button class="btn" type="submit" style="margin-top:14px;width:100%">Зберегти товар</button>
+<p class="note" id="pmsg"></p></form>
+<h2 style="font-size:18px;margin-top:18px">Усі товари</h2><div id="plist"></div>
+</div></div>
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Кошик">
+<div class="dh"><b>Кошик</b><button class="x" id="close" aria-label="Закрити">×</button></div>
+<div class="db" id="db"></div><div class="df" id="df"></div>
+</aside>
+
+<script>
+var cart={},pick={},cat="Усі",ed=null,img=null,art=null,$=function(i){return document.getElementById(i)};
+var P=[],TOKEN=null;try{TOKEN=localStorage.getItem("dk_admin")}catch(e){}
+try{var sv=localStorage.getItem("dk_cart");if(sv)cart=JSON.parse(sv)||{}}catch(e){}
+function prune(){Object.keys(cart).forEach(function(k){if(!P.some(function(p){return p.id==k.split("|")[0]}))delete cart[k]})}
+function save(){try{localStorage.setItem("dk_cart",JSON.stringify(cart))}catch(e){}}
+function uah(n){return n.toLocaleString("uk-UA")+" ₴"}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function chips(){var cs=["Усі"];P.forEach(function(p){if(cs.indexOf(p.c)<0)cs.push(p.c)});
+$("chips").innerHTML=cs.map(function(c){return '<button class="chip'+(c===cat?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join("")}
+function grid(){$("grid").innerHTML=P.filter(function(p){return cat==="Усі"||p.c===cat}).map(function(p){
+if(!pick[p.id])pick[p.id]=p.s[0];
+return '<div class="card"><div class="pic" style="'+bgs(p)+'">'+(p.t?'<span class="tag">'+esc(p.t)+'</span>':'')+(p.img?'':p.e)+'</div><h3>'+esc(p.n)+'</h3><div class="c">'+esc(p.c)+'</div><div class="price"><b>'+uah(p.p)+'</b>'+(p.o?'<s>'+uah(p.o)+'</s>':'')+'</div><div class="sizes">'+p.s.map(function(z){return '<button class="sz'+(pick[p.id]===z?' on':'')+'" data-sz="'+p.id+'|'+z+'">'+esc(z)+'</button>'}).join("")+'</div><button class="add" data-add="'+p.id+'">Додати в кошик</button></div>'}).join("")||'<p class="sub">Товари скоро з’являться</p>'}
+function find(id){return P.filter(function(p){return p.id==id})[0]}
+function total(){return Object.keys(cart).reduce(function(t,k){return t+cart[k]*find(k.split("|")[0]).p},0)}
+function count(){return Object.keys(cart).reduce(function(t,k){return t+cart[k]},0)}
+function render(){$("cnt").textContent=count();save();
+var ks=Object.keys(cart);
+if(!ks.length){$("db").innerHTML='<div class="empty">Кошик поки порожній</div>';$("df").innerHTML="";return}
+$("db").innerHTML=ks.map(function(k){var a=k.split("|"),p=find(a[0]);return '<div class="row"><div class="e" style="'+bgs(p)+'">'+(p.img?'':p.e)+'</div><div class="n"><b>'+esc(p.n)+'</b><span>Розмір '+a[1]+' · '+uah(p.p)+'</span></div><div class="qty"><button data-m="'+k+'">−</button><span>'+cart[k]+'</span><button data-pl="'+k+'">+</button></div></div>'}).join("");
+var t=total(),left=3000-t;
+$("df").innerHTML='<div class="tot"><span>Разом</span><span>'+uah(t)+'</span></div><p class="note">'+(left>0?'Ще '+uah(left)+' до безкоштовної доставки':'Доставка безкоштовна ✓')+'</p><form id="f"><input name="name" placeholder="Ім’я та прізвище" required><input name="tel" type="tel" placeholder="Телефон +380…" required><input name="city" placeholder="Місто" required><input name="np" placeholder="Відділення Нової пошти №" required><select name="pay"><option>Оплата при отриманні</option><option>Картою онлайн</option></select><button class="btn" type="submit">Оформити замовлення</button></form>';
+$("f").onsubmit=function(e){e.preventDefault();var el=this.elements,n=esc(el.name.value),o={name:el.name.value,tel:el.tel.value,city:el.city.value,np:el.np.value,pay:el.pay.value,total:total(),items:Object.keys(cart).map(function(k){var a=k.split("|"),p=find(a[0]);return {n:p.n,size:a[1],qty:cart[k],price:p.p}})};
+api("/api/order",o).then(function(){done(n)},function(){alert("Не вдалося відправити замовлення. Спробуйте ще раз.")})};
+function done(n){cart={};save();$("cnt").textContent=0;
+$("db").innerHTML='<div class="done"><div class="big">💗</div><h2>Дякуємо, '+n+'!</h2><p class="sub">Ми зателефонуємо для підтвердження замовлення.</p></div>';$("df").innerHTML=""}}
+function bgs(p){return p.img?'background:url("'+p.img+'") center/cover':'background:'+p.bg}
+var BGS=["linear-gradient(160deg,#ffd6e6,#ff9fc3)","linear-gradient(160deg,#fff0f5,#ffc2d9)","linear-gradient(160deg,#ffc9dc,#ff7fae)"];
+function api(path,body){return fetch(path,{method:"POST",headers:{"Content-Type":"application/json","x-admin-token":TOKEN||""},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||"помилка");return j})})}
+function pubAll(){var m=$("pmsg");m.textContent="Зберігаю…";return api("/api/products",P).then(function(){m.textContent="Збережено ✓";chips();grid();plist()},function(e){m.textContent="Не вдалося зберегти: "+e.message;throw e})}
+function plist(){var cs=[];P.forEach(function(p){if(cs.indexOf(p.c)<0)cs.push(p.c)});$("cl").innerHTML=cs.map(function(c){return '<option value="'+esc(c)+'">'}).join("");
+$("plist").innerHTML=P.map(function(p){return '<div class="pr"><span>'+esc(p.n)+' · '+uah(p.p)+'</span><button data-ed="'+p.id+'">Змінити</button><button data-del="'+p.id+'">Видалити</button></div>'}).join("")||'<p class="note">Товарів ще немає</p>'}
+function fill(p){var f=$("pf").elements;ed=p?p.id:null;$("pt").textContent=p?"Редагувати товар":"Новий товар";
+f.n.value=p?p.n:"";f.c.value=p?p.c:"";f.p.value=p?p.p:"";f.o.value=p&&p.o?p.o:"";f.s.value=p?p.s.join(", "):"";f.t.value=p&&p.t?p.t:"";f.f.value="";
+img=p&&p.img?p.img:null;$("prev").style.backgroundImage=img?'url("'+img+'")':"none";$("pmsg").textContent=""}
+$("admBtn").onclick=function(){fill(null);plist();$("pnl").classList.add("on")};
+$("pclose").onclick=function(){$("pnl").classList.remove("on")};
+$("pf").elements.f.onchange=function(){var file=this.files[0],m=$("pmsg");if(!file)return;m.textContent="Завантажую фото…";
+var im=new Image();im.onload=function(){var k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+api("/api/upload",{data:c.toDataURL("image/jpeg",.85)}).then(function(r){img=r.url;$("prev").style.backgroundImage='url("'+img+'")';m.textContent="Фото додано ✓"}).catch(function(e){m.textContent="Не вдалося завантажити: "+e.message})};im.src=URL.createObjectURL(file)};
+$("pf").onsubmit=function(e){e.preventDefault();var f=this.elements,s=f.s.value.split(",").map(function(x){return x.replace(/["'<>|]/g,"").trim()}).filter(Boolean);
+var o={id:ed||Date.now(),n:f.n.value.trim(),c:f.c.value.trim(),p:+f.p.value,o:+f.o.value||null,e:"🛍️",bg:BGS[P.length%3],t:f.t.value.trim()||null,s:s.length?s:["One size"]};
+if(img)o.img=img;
+if(ed){P=P.map(function(p){return p.id===ed?Object.assign({},p,o):p})}else P.push(o);
+pubAll().catch(function(){})};
+document.addEventListener("click",function(e){var t=e.target,d=t.dataset;
+if(d.ed){fill(find(d.ed));$("pnl").scrollTo(0,0)}
+if(d.del){if(t.textContent!=="Точно?"){t.textContent="Точно?";return}P=P.filter(function(p){return p.id!=d.del});pubAll().catch(function(){})}});
+function openC(){$("ov").classList.add("on");$("drawer").classList.add("on");render()}
+function shut(){$("ov").classList.remove("on");$("drawer").classList.remove("on")}
+document.addEventListener("click",function(e){var t=e.target,d=t.dataset;
+if(d.c){cat=d.c;chips();grid()}
+if(d.sz){var a=d.sz.split("|");pick[a[0]]=a[1];grid()}
+if(d.add){var k=d.add+"|"+pick[d.add];cart[k]=(cart[k]||0)+1;render();t.textContent="Додано ✓";setTimeout(function(){t.textContent="Додати в кошик"},800)}
+if(d.pl){cart[d.pl]++;render()}
+if(d.m){if(--cart[d.m]<=0)delete cart[d.m];render()}});
+$("openCart").onclick=openC;$("close").onclick=shut;$("ov").onclick=shut;
+fetch("/api/products").then(function(r){return r.json()}).then(function(j){P=j;prune();save();chips();grid();$("cnt").textContent=count()});
+if(TOKEN)$("admBtn").style.display="block";
+if(/[?&]admin/.test(location.search)&&!TOKEN){var pw=prompt("Пароль адміністратора");if(pw)api("/api/login",{password:pw}).then(function(r){TOKEN=r.token;try{localStorage.setItem("dk_admin",TOKEN)}catch(e){}$("admBtn").style.display="block"}).catch(function(){alert("Невірний пароль")})}
+</script>
+</body>
+</html>
